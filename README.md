@@ -38,7 +38,7 @@ We create stores and retrieve the corresponding items. Create Store, Delete, Get
 - If virtual environment is not installed, open terminal and type (skip this if it is already installed)
 	sudo pip3 install virtualenv
 
-Navigate to the project directory as `cd Users/username/project_path/flask_basics/`. Let us create virtual environment.
+Navigate to the project directory as `cd Users/username/project_path/flask_basic/`. Let us create virtual environment.
 1. To create virtual environment, type below command in terminal in above directory:
 
 	``` virtualenv venv ``` 
@@ -78,7 +78,7 @@ MAIN CALLED
  ```
  If you see with http, then your local server is running with `http://127.0.0.1:5000/` and you can test the API's.
  
- To test the API's, download `POSTMAN` [app](https://www.postman.com) and import json from resource folder into the postman app. After importing, you can find all the above listed API's. 
+ To test the API's, download `POSTMAN` [app](https://www.postman.com) and import json from [resource folder](https://github.com/nsandeep440/flask_restful_api/tree/flask_basic_api/api_resources) into the postman app. After importing, you can find all the above listed API's. 
  
  When you run any API in postman, each api logs are printed in terminal where any errors can be identified.
 	
