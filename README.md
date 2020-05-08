@@ -82,5 +82,11 @@ MAIN CALLED
  
  When you run any API in postman, each api logs are printed in terminal where any errors can be identified.
 	
+For more Information, here are the references where you can learn more:
 
+1. [Flask documenation](https://flask.palletsprojects.com/en/1.1.x/tutorial/)
+2. [Udemy Online Course](https://www.udemy.com/course/rest-api-flask-and-python/)
+3. [Flask JWT Extended Documentation](https://flask-jwt-extended.readthedocs.io/en/latest/index.html)
+4. [Flask SQL Alchemy Documentation](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
 
+Always keep learning and **HAPPY CODING** :grinning:
