@@ -1,6 +1,6 @@
 # RestAPI's using python with Flask
 
-This repo is to help developers to create their own Restful API's. The API's are very straight forward:
+This repo is to help developers to create their own Restful API's. The API's are very straight forward and is to understand how to implement them with basic knowloedge of python programming. Following are the categories which has been created:
 
 ### User Registration - 
 Firstly and foremost, We will start with user registration
@@ -30,13 +30,25 @@ We create stores and retrieve the corresponding items. Create Store, Delete, Get
 - **GET /store/<str: store_name>**
 - **DEL /store/<str: store_name>**
 
+To understand how to test and work on above end-points, here is the detailed [documentation](https://documenter.getpostman.com/view/11512923/SztA7Uhw?version=latest). 
+The following are few details: 
+- For now only one evironment is created. 
+- Configure environment variables as `base url` `access token` and `refresh token`. 
+- Requests with body params and its expected response with status codes.
+- Few requests requires `Authorisation` which was created using Flask-JWT-extended
+- Using `test` to configure environment variables, check response status code, reponse time and more.
+
+To add authorisation for a particular request, you can navigate to `resource` folder, open any `.py` (eg: user.py for user requests) file. Add `@jwt_required` decorator for any function (eg: `get(), post(), put(), delete()`) and restart your server. Now, this API should work with out access token.
+
+For more Flask with Python Rest-API's you can check [here](https://explore.postman.com/nsandeep3012).
+
 ### Installation Guilde:
 
 - Download the source code
 - You need to have latest python installed in your machine (eg: python 3.7) and pip installed.
 - We will create a virtual environment so that our libraries will be available within this project.
 - If virtual environment is not installed, open terminal and type (skip this if it is already installed)
-	sudo pip3 install virtualenv
+	```sudo pip3 install virtualenv```
 
 Navigate to the project directory as `cd Users/username/project_path/flask_basic/`. Let us create virtual environment.
 1. To create virtual environment, type below command in terminal in above directory:
@@ -61,7 +73,7 @@ Now, we have to install the flask packages as shown below. Install them one afte
 	
 That’s it and we are ready to test our code and set up local server.
 
-To setup local server, you need to navigate into `code` folder, and run the following command:
+To start local server, you need to navigate into `code` folder, and run the following command:
 
 	python3 app.py
 This command will give show you few lines of printed statement on terminal as shown below:
@@ -85,8 +97,7 @@ MAIN CALLED
 For more Information, here are the references where you can learn more:
 
 1. [Flask documenation](https://flask.palletsprojects.com/en/1.1.x/tutorial/)
-2. [Udemy Online Course](https://www.udemy.com/course/rest-api-flask-and-python/)
-3. [Flask JWT Extended Documentation](https://flask-jwt-extended.readthedocs.io/en/latest/index.html)
-4. [Flask SQL Alchemy Documentation](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
+2. [Flask JWT Extended Documentation](https://flask-jwt-extended.readthedocs.io/en/latest/index.html)
+3. [Flask SQLAlchemy Documentation](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
 
 Always keep learning and **HAPPY CODING** :grinning:
