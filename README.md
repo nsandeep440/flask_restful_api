@@ -90,10 +90,8 @@ MAIN CALLED
  ```
  If you see with http, then your local server is running with `http://127.0.0.1:5000/` and you can test the API's.
  
- To test the API's, download `POSTMAN` [app](https://www.postman.com) and import json from [resource folder](https://github.com/nsandeep440/flask_restful_api/tree/flask_basic_api/api_resources) into the postman app. After importing, you can find all the above listed API's. 
- 
- When you run any API in postman, each api logs are printed in terminal where any errors can be identified.
-	
+ To test the API's, download `POSTMAN` [app](https://www.postman.com), download postman API collection from [here](https://github.com/nsandeep440/flask_restful_api/tree/flask_basic_api/flask_basic/postman_resources/) and import this json file into the postman app. After importing, you can find all the above listed API's. 
+ 	
 For more Information, here are the references where you can learn more:
 
 1. [Flask documenation](https://flask.palletsprojects.com/en/1.1.x/tutorial/)
