@@ -1,4 +1,4 @@
-# RestAPI's using python with Flask
+# RestAPI's using python and Flask
 
 This repo is to help developers to create their own Restful API's. The API's are very straight forward and is to understand how to implement them with basic knowloedge of python programming. Following are the categories which has been created:
 
