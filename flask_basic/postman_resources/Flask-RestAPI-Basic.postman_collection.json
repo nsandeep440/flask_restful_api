@@ -1,0 +1,1670 @@
+{
+	"info": {
+		"_postman_id": "1050e4c2-0ec3-45d6-b59a-cff162effae8",
+		"name": "Flask-RestAPI-Basic",
+		"description": "In this document, some of the basic usage of Rest API's using Flask and Python is created. Below are the few endpoints with sample response and requests. Additionally you can use these requests (API's) in your application (web or mobile) to implement it.\n\nFew API requests require `Authorisation` and for that Flask-JWT extended library is used. You can add/remove authorisation to any of the request by adding a decorator to the request in `Resource/.py` files\n\n## Evironment and its Variables:\n\nYou can create an environment for different stages of your application like Dev, QA, Staging(UAT), production. Each environment can have few environment variables such as Base-URL, access-token and more.\n\nHere are few environment variables created for Environment Rest-API-Dev:\n\n- `url:` This will be base(root) url for all endpoints and this must be `http://127.0.0.1:5000`. Additionally you can change port number and/or local lost url.\n- `access-token` JWT access token (optional) and this will be set automatically using tests.\n- `refresh-token` JWT refresh token and is used to get updated access token\n\n## Status codes:\n\n### Categories:\n- `2xx` series indicates that client's request was accepted successfully\n- `4xx` series indicates that these points fingers at clients\n- `5xx` series indicated that serves takes the resposibility\n\n### Code subsets\n- `200 (OK)` client's request was accpeted successfully and should include a response body. For example GET, POST request.\n- `201 (Created)` Some information is created inside a collection (new resource)\n- `400 (Bad Request)` indicates that client tried to access something where no proper autherization was provided or missing information, wrong credential and etc.,.\n- `404 (Not found)` indicated that it cannot map the client's request.\n- `500` Internal server error.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"username\": \"sandeep\",\n\"password\": \"asdf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Register an User with `username` and `password` in body parameters"
+					},
+					"response": [
+						{
+							"name": "Register - Successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"username\": \"sandeep\",\n\"password\": \"asdf\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "CREATED",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 15:32:07 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User created successfully\"\n}"
+						},
+						{
+							"name": "Registration Failed - Missing parameters",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"username\": \"sandeep\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "BAD REQUEST",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 15:34:05 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": {\n        \"password\": \"Password cannot be blank\"\n    }\n}"
+						},
+						{
+							"name": "Registration Success with body params `username` and `password`",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"username\": \"sandeep\",\n\"password\": \"asdf\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "CREATED",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 15:32:07 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User created successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ad041240-6a6b-4350-b2f7-5d074156c727",
+								"exec": [
+									"var json = pm.response.json();",
+									"",
+									"pm.test(\"acces_token is not empty\", function() {",
+									"    pm.expect(json.access_token).not.eql(undefined);",
+									"});",
+									"pm.test(\"refresh_token is not empty\", function() {",
+									"    pm.expect(json.refresh_token).not.eql(undefined);",
+									"});",
+									"",
+									"// set access token as environement variable",
+									"if (json.access_token !== undefined) {",
+									"    pm.environment.set(\"access_token\", json.access_token);",
+									"} else {",
+									"    pm.environment.unset(\"access_token\");",
+									"}",
+									"// set refresh token as environement variable",
+									"if (json.refresh_token !== undefined) {",
+									"    pm.environment.set(\"refresh_token\", json.refresh_token);",
+									"} else {",
+									"    pm.environment.unset(\"refresh_token\");",
+									"}",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"sandeep\",\n\t\"password\": \"asdf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Login with an existing (Registered) User"
+					},
+					"response": [
+						{
+							"name": "Login Failed without `password` field",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"sandeep\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "BAD REQUEST",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 15:48:34 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": {\n        \"password\": \"Password cannot be blank\"\n    }\n}"
+						},
+						{
+							"name": "Login successfull",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"sandeep\",\n\t\"password\": \"asdf\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "611"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 15:47:39 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTA0MjE2NTksIm5iZiI6MTU5MDQyMTY1OSwianRpIjoiNTRiMmVjYzEtMWE3MC00MjQ2LWE1NjQtNTdmYzVhMDhmYmY4IiwiZXhwIjoxNTkwNDIyNTU5LCJpZGVudGl0eSI6MSwiZnJlc2giOnRydWUsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpc0FkbWluIjp0cnVlfX0.mcP-J-FAm6rkHt7rpH3ZeBJrvK1BwMS26vjy90kVIj4\",\n    \"refresh_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTA0MjE2NTksIm5iZiI6MTU5MDQyMTY1OSwianRpIjoiZjdkYjYwOWYtNDliYS00MjQyLWI4NjAtMjFhNTJlMzAwMDc5IiwiZXhwIjoxNTkzMDEzNjU5LCJpZGVudGl0eSI6MSwidHlwZSI6InJlZnJlc2gifQ.VwV5aKcw1pk8SpL7lQfdbUQxONsggZScShUyQB14D5E\"\n}"
+						},
+						{
+							"name": "Login Failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"sandeep\",\n\t\"password\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "UNAUTHORIZED",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 15:48:10 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid credential\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"logout"
+							]
+						},
+						"description": "Logs out an user with an access_token in headers.\n`\"Authorization\": \"Bearer {access_token}\"`.\n\n- Request fails with expired access token\n- Body params are not required"
+					},
+					"response": [
+						{
+							"name": "Logout - success with access_token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 16:10:34 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User logged out successfully\"\n}"
+						},
+						{
+							"name": "Logout - Token Expired",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "UNAUTHORIZED",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 16:15:46 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"description\": \"Your token is Revoked\",\n    \"error\": \"revoked_token_loader\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Find user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						},
+						"description": "Find a user with USER_ID. It fetches the data from DB with username only.\n\nAdditionaly, an authentication can be added to any request. "
+					},
+					"response": [
+						{
+							"name": "User not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"2"
+									]
+								}
+							},
+							"status": "NOT FOUND",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 18:19:52 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User not found\"\n}"
+						},
+						{
+							"name": "Find user - Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 18:19:15 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": 1,\n        \"username\": \"sandeep\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						},
+						"description": "Delete a user with user_id from data base"
+					},
+					"response": [
+						{
+							"name": "Delete User - Sucess",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 18:20:58 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User deleted\"\n}"
+						},
+						{
+							"name": "Delete User - Not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"2"
+									]
+								}
+							},
+							"status": "NOT FOUND",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 18:21:21 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Refresh-Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{refresh_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/refresh",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"refresh"
+							]
+						},
+						"description": "This request is used to fetch updated (new) access toke. It requred `authentication: Bearer {refresh_token}` and `content-type: application/json`\n\nAfter request is accepted updat the access token to environment variable so that other requests will have updated access_tokn. Update in `test` tab with latest access token."
+					},
+					"response": [
+						{
+							"name": "Refresh-Token-Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{refresh_token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/refresh",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"refresh"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "336"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 18:27:17 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTA0MzEyMzcsIm5iZiI6MTU5MDQzMTIzNywianRpIjoiODkwNWQ0YTMtZjY4OS00ZWZlLTgzNDUtYzI5M2JhYjNiM2Q0IiwiZXhwIjoxNTkwNDMyMTM3LCJpZGVudGl0eSI6MSwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOnsiaXNBZG1pbiI6dHJ1ZX19.zBiZvRQY5hRzGlzKB3ZR5HT2EdKPAK4Aa94RoEG_wqg\"\n}"
+						},
+						{
+							"name": "Unauthorized - missing headers",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/refresh",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"refresh"
+									]
+								}
+							},
+							"status": "UNAUTHORIZED",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 18:25:49 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"description\": \"Unauthorized Loader\",\n    \"error\": \"unauthorized_loader\"\n}"
+						}
+					]
+				}
+			],
+			"description": "This section contains basic user authentication\n\n- Register an User\n- Login\n- Refresh token\n- Retrieve user details\n- Logout\n- Delete user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "17c5d072-7605-4b9a-bbd7-887dd7a22844",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e31fcd1f-31fe-42ed-ae12-e89491924c7e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Items",
+			"item": [
+				{
+					"name": "Create an Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Length",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"price\": 12,\n  \"store_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/item/van",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"item",
+								"van"
+							]
+						},
+						"description": "Create an Item with item name in request (eg:- `/chair`) and pass two params in body. This request uses Authorisation in headers."
+					},
+					"response": [
+						{
+							"name": "Create an Item with store-id",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Length",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"price\": 10,\n  \"store_id\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/item/chair",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"item",
+										"chair"
+									]
+								}
+							},
+							"status": "CREATED",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "75"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 19:03:17 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"chair\",\n    \"price\": 10,\n    \"store_id\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Find Item by item_name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/item/chair",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"item",
+								"chair"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Find Item by item_name - Failed",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/item/chair1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"item",
+										"chair1"
+									]
+								}
+							},
+							"status": "NOT FOUND",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 19:06:29 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Item does not exists\"\n}"
+						},
+						{
+							"name": "Find Item by item_name - success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/item/chair",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"item",
+										"chair"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "75"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 19:06:13 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"chair\",\n    \"price\": 10,\n    \"store_id\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Update an Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"price\": 13.00,\n\t\"store_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/item/chair",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"item",
+								"chair"
+							]
+						},
+						"description": "- This request updates an existing Item (eg: /chair) as changing chair's price value to $15.00\n- If item name is not found, this request will insert the data in to our data base with params provided\n- Once new data is updated, check all items request to find the newly updated content."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an Item",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/item/chair",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"item",
+								"chair"
+							]
+						},
+						"description": "Delete an Item with item_name"
+					},
+					"response": [
+						{
+							"name": "Delete an Item - Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/item/chair",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"item",
+										"chair"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 May 2020 00:32:10 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Item chair deleted\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all items",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/items",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"items"
+							]
+						},
+						"description": "Get list of all items associated with store ids. In this request, you can get all items with and without authorisation. \n- Without authorisation, request will pass only item names in response\n- with authorisation, request will pass all items data (price, item name, item id, store id) in response\n\nFor more info, check example response.\n\n"
+					},
+					"response": [
+						{
+							"name": "Items without access token",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/items",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"items"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "144"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 May 2020 00:35:13 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"items\": [\n        \"chair\",\n        \"car\",\n        \"truck\",\n        \"van\"\n    ],\n    \"message\": \"Mode info is available, if you log-in\"\n}"
+						},
+						{
+							"name": "Items with access token",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/items",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"items"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "516"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 May 2020 00:36:00 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"items\": [\n        {\n            \"id\": 1,\n            \"name\": \"chair\",\n            \"price\": 13,\n            \"store_id\": 1\n        },\n        {\n            \"id\": 2,\n            \"name\": \"car\",\n            \"price\": 10,\n            \"store_id\": 1\n        },\n        {\n            \"id\": 3,\n            \"name\": \"truck\",\n            \"price\": 10,\n            \"store_id\": 1\n        },\n        {\n            \"id\": 4,\n            \"name\": \"van\",\n            \"price\": 12,\n            \"store_id\": 2\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Stores",
+			"item": [
+				{
+					"name": "Create a store",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/store/zoozoo",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"store",
+								"zoozoo"
+							]
+						},
+						"description": "Creates a store with store name. This request will fetch all the items with this store-id"
+					},
+					"response": [
+						{
+							"name": "Create a store - zoozoo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/store/zoozoo",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"store",
+										"zoozoo"
+									]
+								}
+							},
+							"status": "CREATED",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "181"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 May 2020 00:43:42 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"zoozoo\",\n    \"items\": [\n        {\n            \"id\": 4,\n            \"name\": \"van\",\n            \"price\": 12,\n            \"store_id\": 2\n        }\n    ]\n}"
+						},
+						{
+							"name": "Creates a store",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/store/vehicle",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"store",
+										"vehicle"
+									]
+								}
+							},
+							"status": "CREATED",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "430"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 May 2020 00:42:32 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"vehicle\",\n    \"items\": [\n        {\n            \"id\": 1,\n            \"name\": \"chair\",\n            \"price\": 13,\n            \"store_id\": 1\n        },\n        {\n            \"id\": 2,\n            \"name\": \"car\",\n            \"price\": 10,\n            \"store_id\": 1\n        },\n        {\n            \"id\": 3,\n            \"name\": \"truck\",\n            \"price\": 10,\n            \"store_id\": 1\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Find store",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/store/mystore",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"store",
+								"mystore"
+							]
+						},
+						"description": "Fetches the store information with store-name"
+					},
+					"response": [
+						{
+							"name": "Find store with store name: vehicle",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/store/vehicle",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"store",
+										"vehicle"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "430"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 May 2020 00:45:52 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"vehicle\",\n    \"items\": [\n        {\n            \"id\": 1,\n            \"name\": \"chair\",\n            \"price\": 13,\n            \"store_id\": 1\n        },\n        {\n            \"id\": 2,\n            \"name\": \"car\",\n            \"price\": 10,\n            \"store_id\": 1\n        },\n        {\n            \"id\": 3,\n            \"name\": \"truck\",\n            \"price\": 10,\n            \"store_id\": 1\n        }\n    ]\n}"
+						},
+						{
+							"name": "Store not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/store/mystore",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"store",
+										"mystore"
+									]
+								}
+							},
+							"status": "NOT FOUND",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 May 2020 00:46:31 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Store: mystore not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all stores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/stores",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"stores"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all stores",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/stores",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"stores"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "926"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 May 2020 00:47:15 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"stores\": [\n        {\n            \"id\": 1,\n            \"name\": \"vehicle\",\n            \"items\": [\n                {\n                    \"id\": 1,\n                    \"name\": \"chair\",\n                    \"price\": 13,\n                    \"store_id\": 1\n                },\n                {\n                    \"id\": 2,\n                    \"name\": \"car\",\n                    \"price\": 10,\n                    \"store_id\": 1\n                },\n                {\n                    \"id\": 3,\n                    \"name\": \"truck\",\n                    \"price\": 10,\n                    \"store_id\": 1\n                }\n            ]\n        },\n        {\n            \"id\": 2,\n            \"name\": \"zoozoo\",\n            \"items\": [\n                {\n                    \"id\": 4,\n                    \"name\": \"van\",\n                    \"price\": 12,\n                    \"store_id\": 2\n                }\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete store with name",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/store/vehicle",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"store",
+								"vehicle"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Deleted vehicle store",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/store/vehicle",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"store",
+										"vehicle"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 May 2020 00:48:12 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Store: \\\"vehicle\\\" deleted\"\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "4cfe6ab4-d142-4939-8cde-fc8036deafaf",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "7952b750-94a2-4a45-a101-6719f3cecc28",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
